@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://serviciidecontabilitateanglia.github.io/sitemap.xml
