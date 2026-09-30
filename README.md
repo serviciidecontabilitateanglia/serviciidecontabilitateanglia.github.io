@@ -22,7 +22,7 @@ Site de prezentare pentru o firmă de contabilitate din Marea Britanie, pentru c
 - **Cum lucrăm**: 3 pași
 - **Termene fiscale** (pagina `termene.html` / `deadlines.html`): următorul termen evidențiat, link „+ Google Calendar” la fiecare termen și fișier de calendar cu toate termenele
 - **Documente necesare** (pagina `documente.html` / `documents.html`): liste pentru CIS/self-employed, Ltd și firmă nouă, cu buton de printare sau salvare PDF
-- **Ghiduri** (în română): Self Assessment pas cu pas, ce faci dacă ai ratat 31 ianuarie, cum plătești taxele la HMRC, rambursarea taxelor când pleci din UK (P85), taxe pentru Uber și livrări, VAT și pragul de înregistrare, numărul UTR, cheltuieli deductibile pe CIS, rambursarea CIS, taxe plătite în plus din salariu, scrisori de la HMRC, amenzi HMRC, ipotecă și refinanțare, self-employed sau Ltd, înființarea unei firme Ltd, Making Tax Digital, taxe pe chirii. Fiecare are timp de citit, link „← Toate ghidurile” și 3 ghiduri similare la final (lista `RELATED` din generator).
+- **Ghiduri** (în română): Self Assessment pas cu pas, ce faci dacă ai ratat 31 ianuarie, cum plătești taxele la HMRC, rambursarea taxelor când pleci din UK (P85), taxe pentru Uber și livrări, VAT și pragul de înregistrare, Universal Credit pentru self-employed, numărul UTR, cheltuieli deductibile pe CIS, rambursarea CIS, taxe plătite în plus din salariu, scrisori de la HMRC, amenzi HMRC, ipotecă și refinanțare, self-employed sau Ltd, înființarea unei firme Ltd, Making Tax Digital, taxe pe chirii. Fiecare are timp de citit, link „← Toate ghidurile” și 3 ghiduri similare la final (lista `RELATED` din generator).
 - **Despre noi**
 - **Întrebări frecvente**: UTR, termenul Self Assessment, CIS, Making Tax Digital, self-employed sau Ltd, scrisori HMRC, clienți din afara Londrei
 - **Contact**: formular de ofertă (câmpul „angajați” apare doar pentru firme Ltd), telefon, WhatsApp, e-mail, oraș, program
@@ -36,7 +36,7 @@ Site de prezentare pentru o firmă de contabilitate din Marea Britanie, pentru c
 | `en.html` | Pagina în **engleză** |
 | `styles.css` | Culorile și aspectul (comun pentru ambele limbi) |
 | `script.js` | Meniul pe telefon, formularul de contact, calculatoarele, termenele și printarea |
-| `ghid-*.html` | Cele 17 ghiduri în română |
+| `ghid-*.html` | Cele 18 ghiduri în română |
 | `fonts/` | Fontul Inter, găzduit pe site (licență SIL OFL în `fonts/LICENSE.txt`) |
 | `404.html` | Pagina afișată când o adresă nu există |
 | `confidentialitate.html`, `privacy.html` | Politica de confidențialitate (RO / EN) |
