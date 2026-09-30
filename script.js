@@ -50,14 +50,19 @@ const numara = (nume) => {
   if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: nume, title: nume, event: true });
 };
 
-// Click-uri pe WhatsApp, telefon, Calendly și calendar, oriunde în pagină
+// Pagina curentă, fără „.html” (ex. „ghid-rambursare-cis”; „acasa” pentru prima pagină)
+const pagina = location.pathname.replace(/^\/+|\.html$/g, "").replace(/^index$/, "") || "acasa";
+
+// Click-uri pe WhatsApp, telefon, e-mail, Calendly și calendar, oriunde în pagină.
+// La contact se adaugă și pagina („click-whatsapp/ghid-rambursare-cis”), ca să vezi ce pagină aduce clienți.
 document.addEventListener("click", (e) => {
   const a = e.target.closest("a[href]");
   if (!a) return;
   const h = a.getAttribute("href");
-  if (h.startsWith("https://wa.me")) numara("click-whatsapp");
-  else if (h.startsWith("tel:")) numara("click-telefon");
-  else if (h.includes("calendly.com")) numara("click-programare");
+  if (h.startsWith("https://wa.me")) numara(`click-whatsapp/${pagina}`);
+  else if (h.startsWith("tel:")) numara(`click-telefon/${pagina}`);
+  else if (h.startsWith("mailto:")) numara(`click-email/${pagina}`);
+  else if (h.includes("calendly.com")) numara(`click-programare/${pagina}`);
   else if (h.includes("g.page/r/")) numara("click-recenzie");
   else if (h.endsWith(".ics")) numara("calendar-descarcat");
   else if (a.classList.contains("termen__add")) numara("calendar-google");

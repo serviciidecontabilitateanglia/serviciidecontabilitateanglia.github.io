@@ -1,5 +1,11 @@
 # Servicii De Contabilitate Anglia: website
 
+> ### 👉 Cauți un contabil român în UK? Intră pe site: **[serviciidecontabilitateanglia.github.io](https://serviciidecontabilitateanglia.github.io/)**
+>
+> Self Assessment, rambursări CIS, firme Ltd, VAT și Making Tax Digital, explicate în română. Prima consultație e gratuită: [WhatsApp](https://wa.me/447909451914) · [+44 7909 451914](tel:+447909451914) · [ghiduri gratuite](https://serviciidecontabilitateanglia.github.io/#ghiduri)
+>
+> *Această pagină conține doar codul site-ului.*
+
 Site de prezentare pentru o firmă de contabilitate din Marea Britanie, pentru clienți români. Are două limbi, română și engleză, cu un buton **RO / EN** în partea de sus. Funcționează pe calculator, tabletă și telefon.
 
 ## Ce conține
@@ -49,7 +55,7 @@ Cu cheia Web3Forms, formularul trimite mesajul direct pe e-mail. Fără cheie, d
 2. Cheia vine pe e-mail. Pune-o în `script.js`, la `const WEB3FORMS_KEY`, între ghilimele. **Activă acum**: formularul „Contact - Servicii De Contabilitate Anglia” din contul Web3Forms.
 3. Dacă serverul Web3Forms nu răspunde, formularul deschide automat aplicația de e-mail, deci nu se pierde niciun mesaj.
 
-Statistici de vizitare: https://contabilitateanglia.goatcounter.com (fără cookie-uri; codul e la sfârșitul fiecărei pagini HTML). La **Events** vezi acțiunile: `formular-trimis`, `click-whatsapp`, `click-telefon`, `click-programare`, `calculator-cis`, `calculator-ltd` (și `-cerere` când se apasă butonul de sub rezultat), `calendar-descarcat`, `calendar-google`, `documente-print`, `click-recenzie`.
+Statistici de vizitare: https://contabilitateanglia.goatcounter.com (fără cookie-uri; codul e la sfârșitul fiecărei pagini HTML). La **Events** vezi acțiunile: `click-whatsapp`, `click-telefon`, `click-email`, `click-programare` (acestea patru au la final pagina de pe care s-a apăsat, de ex. `click-whatsapp/ghid-rambursare-cis` sau `click-telefon/acasa`; scrie `click-` în „Filter paths” ca să le vezi pe toate), `formular-trimis`, `calculator-cis`, `calculator-ltd` (și `-cerere` când se apasă butonul de sub rezultat), `calendar-descarcat`, `calendar-google`, `documente-print`, `click-recenzie`.
 
 Dacă modifici un text, modifică-l în **ambele** fișiere, `index.html` și `en.html`.
 
