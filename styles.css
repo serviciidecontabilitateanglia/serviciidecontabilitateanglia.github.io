@@ -438,6 +438,7 @@ a { color: var(--primary); }
 /* ========== Pagini de ghid și confidențialitate ========== */
 .article h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
 .article h2 { font-size: 1.35rem; margin-top: 1.8em; }
+.article h3 { font-size: 1.05rem; margin: 1.4em 0 0.4em; }
 .article p, .article li { color: #33424f; }
 .article ul, .article ol { padding-left: 1.3em; margin: 0 0 1em; }
 .article li { margin-bottom: 0.5em; }
