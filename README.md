@@ -26,6 +26,7 @@ Site de prezentare pentru o firmă de contabilitate din Marea Britanie, pentru c
 - **Despre noi**
 - **Întrebări frecvente**: UTR, termenul Self Assessment, CIS, Making Tax Digital, self-employed sau Ltd, scrisori HMRC, clienți din afara Londrei
 - **Contact**: formular de ofertă (câmpul „angajați” apare doar pentru firme Ltd), telefon, WhatsApp, e-mail, oraș, program
+- **Anunț MTD** sub meniu, pe ambele pagini principale: „Din 6 aprilie 2027, Making Tax Digital se aplică de la £30.000”. Dispare singur pe 6 aprilie 2027 (atributul `data-pana`) și cât timp apare numărătoarea până la 31 ianuarie.
 - Pagina în engleză are și secțiunea **Guides**, cu linkuri spre ghidurile în română
 
 ## Fișiere
@@ -36,8 +37,8 @@ Site de prezentare pentru o firmă de contabilitate din Marea Britanie, pentru c
 | `en.html` | Pagina în **engleză** |
 | `styles.css` | Culorile și aspectul (comun pentru ambele limbi) |
 | `script.js` | Meniul pe telefon, formularul de contact, calculatoarele, termenele și printarea |
-| `ghid-*.html` | Cele 18 ghiduri în română |
-| `ghiduri.html` | Pagina „Toate ghidurile”: cele 18 ghiduri, grupate pe teme. Pe prima pagină apar doar 6, cu butonul „Vezi toate cele 18 ghiduri”. Când adaugi un ghid nou, pune-i cardul aici, în tema potrivită, și în `sitemap.xml`. |
+| `ghid-*.html` | Cele 19 ghiduri în română |
+| `ghiduri.html` | Pagina „Toate ghidurile”: cele 19 ghiduri, grupate pe teme. Pe prima pagină apar doar 6, cu butonul „Vezi toate cele 19 ghiduri”. Când adaugi un ghid nou, pune-i cardul aici, în tema potrivită, și în `sitemap.xml`. |
 | `fonts/` | Fontul Inter, găzduit pe site (licență SIL OFL în `fonts/LICENSE.txt`) |
 | `404.html` | Pagina afișată când o adresă nu există |
 | `confidentialitate.html`, `privacy.html` | Politica de confidențialitate (RO / EN) |
