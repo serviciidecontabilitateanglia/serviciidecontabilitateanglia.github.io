@@ -685,3 +685,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 
 /* Linkurile din subsol: zonă de atingere mai mare pe telefon */
 @media (max-width: 760px) { .footer a { display: inline-block; padding: 6px 0; } }
+
+/* Pagina „Toate ghidurile” și butonul de sub ghidurile de pe prima pagină */
+.ghiduri__cat { font-size: 1.3rem; margin: 40px 0 16px; }
+.ghiduri__cat:first-of-type { margin-top: 8px; }
+.ghiduri__cta { margin-top: 48px; }
+.ghiduri__toate { text-align: center; margin: 32px 0 0; }

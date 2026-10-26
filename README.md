@@ -37,6 +37,7 @@ Site de prezentare pentru o firmă de contabilitate din Marea Britanie, pentru c
 | `styles.css` | Culorile și aspectul (comun pentru ambele limbi) |
 | `script.js` | Meniul pe telefon, formularul de contact, calculatoarele, termenele și printarea |
 | `ghid-*.html` | Cele 18 ghiduri în română |
+| `ghiduri.html` | Pagina „Toate ghidurile”: cele 18 ghiduri, grupate pe teme. Pe prima pagină apar doar 6, cu butonul „Vezi toate cele 18 ghiduri”. Când adaugi un ghid nou, pune-i cardul aici, în tema potrivită, și în `sitemap.xml`. |
 | `fonts/` | Fontul Inter, găzduit pe site (licență SIL OFL în `fonts/LICENSE.txt`) |
 | `404.html` | Pagina afișată când o adresă nu există |
 | `confidentialitate.html`, `privacy.html` | Politica de confidențialitate (RO / EN) |
