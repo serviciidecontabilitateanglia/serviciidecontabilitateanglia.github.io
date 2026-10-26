@@ -196,6 +196,14 @@ if (sezon) {
   }
 }
 
+// Anunț temporar (de exemplu MTD din aprilie 2027): dispare după data din data-pana
+// și cât timp e afișat bannerul cu zilele până la 31 ianuarie.
+const anunt = document.querySelector("[data-anunt]");
+if (anunt) {
+  const pana = new Date(anunt.dataset.pana + "T00:00:00");
+  if (new Date() >= pana || (sezon && !sezon.hidden)) anunt.hidden = true;
+}
+
 // Prețuri pe telefon: lista „Ce include” se deschide la cerere
 document.querySelectorAll(".price-card ul").forEach((lista) => {
   const buton = document.createElement("button");
