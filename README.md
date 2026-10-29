@@ -37,8 +37,8 @@ Site de prezentare pentru o firmă de contabilitate din Marea Britanie, pentru c
 | `en.html` | Pagina în **engleză** |
 | `styles.css` | Culorile și aspectul (comun pentru ambele limbi) |
 | `script.js` | Meniul pe telefon, formularul de contact, calculatoarele, termenele și printarea |
-| `ghid-*.html` | Cele 19 ghiduri în română |
-| `ghiduri.html` | Pagina „Toate ghidurile”: cele 19 ghiduri, grupate pe teme. Pe prima pagină apar doar 6, cu butonul „Vezi toate cele 19 ghiduri”. Când adaugi un ghid nou, pune-i cardul aici, în tema potrivită, și în `sitemap.xml`. |
+| `ghid-*.html` | Cele 20 de ghiduri în română, inclusiv articolul despre Bugetul din 28 octombrie 2026 (`ghid-buget-octombrie-2026.html`, în tema „Noutăți”) |
+| `ghiduri.html` | Pagina „Toate ghidurile”: cele 20 de ghiduri, grupate pe teme (prima temă, „Noutăți”, e pentru articolele despre schimbări recente). Pe prima pagină apar doar 6, cu butonul „Vezi toate cele 20 de ghiduri”. Când adaugi un ghid nou, pune-i cardul aici, în tema potrivită, și în `sitemap.xml`. |
 | `fonts/` | Fontul Inter, găzduit pe site (licență SIL OFL în `fonts/LICENSE.txt`) |
 | `404.html` | Pagina afișată când o adresă nu există |
 | `confidentialitate.html`, `privacy.html` | Politica de confidențialitate (RO / EN) |

@@ -239,7 +239,7 @@ const RATE = {
   niCotaPrincipala: 0.06,
   niCotaSuperioara: 0.02,
   cisCota: 0.2,               // reținerea CIS standard
-  mileLimita: 10000,          // 45p/milă până aici, 25p după
+  mileLimita: 10000,          // 45p/milă până aici, 25p după (2025/26; din 2026/27: 55p, iar din 2027/28 35p peste 10.000)
   mileCotaMare: 0.45,
   mileCotaMica: 0.25,
   // Firmă Ltd
