@@ -7,7 +7,7 @@
   <meta name="description" content="Contabil român în Londra, online în tot UK-ul: Self Assessment, rambursări CIS, firme Ltd, VAT, Making Tax Digital și investigații HMRC, explicate în română.">
   <link rel="alternate" hreflang="ro" href="https://serviciidecontabilitateanglia.github.io/">
   <link rel="alternate" hreflang="en" href="https://serviciidecontabilitateanglia.github.io/en.html">
-  <link rel="alternate" hreflang="x-default" href="https://serviciidecontabilitateanglia.github.io/en.html">
+  <link rel="alternate" hreflang="x-default" href="https://serviciidecontabilitateanglia.github.io/">
   <link rel="canonical" href="https://serviciidecontabilitateanglia.github.io/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -195,7 +195,7 @@
         <a href="ghid-mtd-30000-aprilie-2027.html" class="btn btn--small">Verifică</a>
       </div>
     </div>
-    <div class="sezon" data-sezon hidden data-text="⏰ Mai sunt {n} zile până la 31 ianuarie, termenul pentru declarația Self Assessment." data-ultima="⏰ Astăzi e ultima zi pentru declarația Self Assessment!">
+    <div class="sezon" data-sezon hidden data-text="⏰ Mai sunt {n} zile până la 31 ianuarie, termenul pentru declarația Self Assessment." data-ultima="⏰ Astăzi e ultima zi pentru declarația Self Assessment!" data-maine="⏰ Mâine e ultima zi pentru declarația Self Assessment!">
       <div class="container sezon__inner">
         <p data-sezon-text></p>
         <a href="#contact" class="btn btn--small" data-tip="Self-employed">Cere ofertă</a>
@@ -291,11 +291,19 @@
         <div class="section__head">
           <p class="eyebrow">Calculator gratuit</p>
           <h2>Cât poți primi înapoi din CIS?</h2>
-          <p>Introdu sumele din anul fiscal 2025/26 (6 aprilie 2025 – 5 aprilie 2026) și vezi pe loc o estimare a rambursării.</p>
+          <p>Alege anul fiscal, introdu sumele și vezi pe loc o estimare a rambursării. Poți cere banii înapoi până la 4 ani în urmă: pentru <strong>2022/23</strong>, termenul este <strong>5 aprilie 2027</strong>.</p>
         </div>
 
         <div class="calc" id="cis-calc">
           <form class="calc__form" autocomplete="off" novalidate>
+            <fieldset class="an-fiscal">
+              <legend>Anul fiscal</legend>
+              <label><input type="radio" name="an" value="2026/27"> 2026/27</label>
+              <label><input type="radio" name="an" value="2025/26" checked> 2025/26</label>
+              <label><input type="radio" name="an" value="2024/25"> 2024/25</label>
+              <label><input type="radio" name="an" value="2023/24"> 2023/24</label>
+              <label><input type="radio" name="an" value="2022/23"> 2022/23</label>
+            </fieldset>
             <fieldset>
               <legend>1. Venitul tău pe CIS</legend>
               <label>Total brut încasat (înainte de reținere)
@@ -319,7 +327,7 @@
                 </label>
                 <label>Mile parcurse cu mașina proprie în interes de muncă
                   <span class="money"><span>mi</span><input type="number" name="mile" min="0" step="any" inputmode="decimal" placeholder="0"></span>
-                  <small>Calculăm 45p/milă pentru primele 10.000 de mile și 25p după aceea (ratele pentru 2025/26).</small>
+                  <small data-cis-mile>Calculăm 45p/milă pentru primele 10.000 de mile și 25p după aceea (ratele pentru 2025/26).</small>
                 </label>
                 <label>Alte costuri de transport (tren, parcare, taxe de drum)
                   <span class="money"><span>£</span><input type="number" name="transport" min="0" step="any" inputmode="decimal" placeholder="0"></span>
@@ -346,13 +354,13 @@
               <div><dt>Cheltuieli deductibile</dt><dd data-out="cheltuieli">£0</dd></div>
               <div><dt>Profit impozabil</dt><dd data-out="profit">£0</dd></div>
               <div><dt>Impozit pe venit</dt><dd data-out="impozit">£0</dd></div>
-              <div><dt>Contribuții Class 4 NI</dt><dd data-out="ni">£0</dd></div>
+              <div><dt>Contribuții National Insurance</dt><dd data-out="ni">£0</dd></div>
               <div><dt>Total datorat</dt><dd data-out="datorat">£0</dd></div>
               <div><dt>CIS deja reținut</dt><dd data-out="retinut">£0</dd></div>
             </dl>
 
             <a href="#contact" class="btn btn--block calc__cta">Vreau să recuperez banii</a>
-            <p class="calc__note">Este doar o estimare, nu consultanță fiscală. Calculul folosește ratele pentru Anglia, Țara Galilor și Irlanda de Nord în 2025/26 și presupune că CIS a fost singurul tău venit. Salariile, chiriile, împrumuturile de student sau rezidența în Scoția schimbă rezultatul. Suma exactă o afli la consultația gratuită.</p>
+            <p class="calc__note">Este doar o estimare, nu consultanță fiscală. Calculul folosește ratele pentru Anglia, Țara Galilor și Irlanda de Nord din anul fiscal ales (<span data-cis-an>2025/26</span>) și presupune că CIS a fost singurul tău venit. Salariile, chiriile, împrumuturile de student sau rezidența în Scoția schimbă rezultatul. Suma exactă o afli la consultația gratuită.</p>
           </aside>
         </div>
       </div>
@@ -572,7 +580,7 @@
             <span class="card__link">Citește ghidul →</span>
           </a>
         </div>
-        <p class="ghiduri__toate"><a href="ghiduri.html" class="btn btn--ghost">Vezi toate cele 20 de ghiduri →</a></p>
+        <p class="ghiduri__toate"><a href="ghiduri.html" class="btn btn--ghost">Vezi toate cele 26 de ghiduri →</a></p>
       </div>
     </section>
 

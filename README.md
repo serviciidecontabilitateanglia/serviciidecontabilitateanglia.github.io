@@ -13,16 +13,16 @@ Site de prezentare pentru o firmă de contabilitate din Marea Britanie, pentru c
 - **Prezentare**: mesaj principal, butoane „Cere o ofertă gratuită” și „Programează consultația gratuită” (Calendly)
 - **Contact rapid**: pe telefon, bară fixă jos cu Sună · WhatsApp · Programează (bara de sus se ascunde la derulare în jos); pe calculator, buton WhatsApp plutitor
 - **Iconițe desenate** (SVG, în culorile site-ului), la fel pe toate dispozitivele
-- **Banner de sezon**: în decembrie și ianuarie arată automat câte zile mai sunt până la termenul din 31 ianuarie
+- **Banner de sezon**: din 1 noiembrie până pe 31 ianuarie arată automat câte zile mai sunt până la termenul din 31 ianuarie
 - **Servicii**: Self Assessment, CIS și recuperare taxe, administrare firme Ltd, raportare VAT, raportare Making Tax Digital, reprezentare în investigații HMRC
 - **Documente pentru ipotecă și refinanțare** (de la £200): banner sub servicii, cu nota că nu oferim consultanță de credit (activitate reglementată FCA)
-- **Calculator CIS**: estimează pe loc rambursarea CIS din venitul brut, suma reținută și cheltuieli (unelte, echipament de protecție, mile, transport, telefon, altele). Butonul de sub rezultat completează formularul de contact cu estimarea; „Trimite rezultatul pe WhatsApp” deschide o conversație cu estimarea scrisă. Pe telefon, o bară jos arată rezultatul cât timp completezi.
+- **Calculator CIS**: alegi anul fiscal (2022/23 – 2026/27, pentru că rambursarea se poate cere până la 4 ani în urmă) și estimează pe loc rambursarea CIS din venitul brut, suma reținută și cheltuieli (unelte, echipament de protecție, mile, transport, telefon, altele). Butonul de sub rezultat completează formularul de contact cu estimarea; „Trimite rezultatul pe WhatsApp” deschide o conversație cu estimarea scrisă. Pe telefon, o bară jos arată rezultatul cât timp completezi.
 - **Calculator Self-employed sau Ltd**: compară cât îți rămâne în mână ca self-employed și cu o firmă Ltd (salariu de £12.570 + dividende), pentru anul fiscal 2025/26 sau 2026/27
 - **Prețuri**: Self Assessment / CIS de la £150, pachet MTD £300/an (4 raportări × £75, declarația anuală inclusă), administrare Ltd de la £100/lună, raportare VAT £75, documente pentru ipotecă de la £200, investigații HMRC de la £250, prima consultație gratuită
 - **Cum lucrăm**: 3 pași
 - **Termene fiscale** (pagina `termene.html` / `deadlines.html`): următorul termen evidențiat, link „+ Google Calendar” la fiecare termen și fișier de calendar cu toate termenele
 - **Documente necesare** (pagina `documente.html` / `documents.html`): liste pentru CIS/self-employed, Ltd și firmă nouă, cu buton de printare sau salvare PDF
-- **Ghiduri** (în română): Self Assessment pas cu pas, ce faci dacă ai ratat 31 ianuarie, cum plătești taxele la HMRC, rambursarea taxelor când pleci din UK (P85), taxe pentru Uber și livrări, VAT și pragul de înregistrare, Universal Credit pentru self-employed, numărul UTR, cheltuieli deductibile pe CIS, rambursarea CIS, taxe plătite în plus din salariu, scrisori de la HMRC, amenzi HMRC, ipotecă și refinanțare, self-employed sau Ltd, înființarea unei firme Ltd, Making Tax Digital, taxe pe chirii. Fiecare are timp de citit, link „← Toate ghidurile” și 3 ghiduri similare la final (lista `RELATED` din generator).
+- **Ghiduri** (în română): Self Assessment pas cu pas, ce faci dacă ai ratat 31 ianuarie, cum plătești taxele la HMRC, rambursarea taxelor când pleci din UK (P85), taxe pentru Uber și livrări, VAT și pragul de înregistrare, Universal Credit pentru self-employed, numărul UTR, cheltuieli deductibile pe CIS, rambursarea CIS, taxe plătite în plus din salariu, scrisori de la HMRC, amenzi HMRC, ipotecă și refinanțare, self-employed sau Ltd, înființarea unei firme Ltd, Making Tax Digital, taxe pe chirii, Marriage Allowance, CIS Gross Payment Status, venituri din România, Student Loan, plățile în avans, contul online HMRC. Fiecare are timp de citit, link „← Toate ghidurile” și 3 ghiduri similare la final (lista `RELATED` din generator).
 - **Despre noi**
 - **Întrebări frecvente**: UTR, termenul Self Assessment, CIS, Making Tax Digital, self-employed sau Ltd, scrisori HMRC, clienți din afara Londrei
 - **Contact**: formular de ofertă (câmpul „angajați” apare doar pentru firme Ltd), telefon, WhatsApp, e-mail, oraș, program
@@ -37,8 +37,8 @@ Site de prezentare pentru o firmă de contabilitate din Marea Britanie, pentru c
 | `en.html` | Pagina în **engleză** |
 | `styles.css` | Culorile și aspectul (comun pentru ambele limbi) |
 | `script.js` | Meniul pe telefon, formularul de contact, calculatoarele, termenele și printarea |
-| `ghid-*.html` | Cele 20 de ghiduri în română, inclusiv articolul despre Bugetul din 28 octombrie 2026 (`ghid-buget-octombrie-2026.html`, în tema „Noutăți”) |
-| `ghiduri.html` | Pagina „Toate ghidurile”: cele 20 de ghiduri, grupate pe teme (prima temă, „Noutăți”, e pentru articolele despre schimbări recente). Pe prima pagină apar doar 6, cu butonul „Vezi toate cele 20 de ghiduri”. Când adaugi un ghid nou, pune-i cardul aici, în tema potrivită, și în `sitemap.xml`. |
+| `ghid-*.html` | Cele 26 de ghiduri în română, inclusiv articolul despre Bugetul din 28 octombrie 2026 (`ghid-buget-octombrie-2026.html`, în tema „Noutăți”) |
+| `ghiduri.html` | Pagina „Toate ghidurile”: cele 26 de ghiduri, grupate pe teme (prima temă, „Noutăți”, e pentru articolele despre schimbări recente). Pe prima pagină apar doar 6, cu butonul „Vezi toate cele 26 de ghiduri”. Când adaugi un ghid nou, pune-i cardul aici, în tema potrivită, și în `sitemap.xml`. |
 | `fonts/` | Fontul Inter, găzduit pe site (licență SIL OFL în `fonts/LICENSE.txt`) |
 | `404.html` | Pagina afișată când o adresă nu există |
 | `confidentialitate.html`, `privacy.html` | Politica de confidențialitate (RO / EN) |
@@ -69,10 +69,10 @@ Dacă le schimbi, schimbă-le în `index.html` **și** în `en.html` (telefonul 
 
 ## Actualizarea anuală (după 6 aprilie)
 
-Calculatorul folosește ratele pentru anul fiscal **2025/26** (Anglia, Țara Galilor și Irlanda de Nord): alocația personală £12.570, impozit 20% / 40% / 45%, Class 4 NI 6% și 2%, mile 45p / 25p.
+Ratele de bază din `RATE` sunt pentru anul fiscal **2025/26** (Anglia, Țara Galilor și Irlanda de Nord): alocația personală £12.570, impozit 20% / 40% / 45%, Class 4 NI 6% și 2%, mile 45p / 25p. Pentru calculatorul CIS, diferențele pe ani (Class 4 și Class 2 în 2022/23 și 2023/24, 55p pe milă în 2026/27) sunt în `CIS_ANI`.
 
 La fiecare an fiscal nou:
-1. **Calculatoarele**: schimbă valorile din blocul `RATE` din `script.js` (iar pentru calculatorul Ltd adaugă noul an în `ANI_FISCALI`, cu cotele pentru dividende, și butonul lui în `index.html` și `en.html`), apoi anul fiscal din textele calculatoarelor în `index.html` și `en.html` (caută `2025/26`).
+1. **Calculatoarele**: schimbă valorile din blocul `RATE` din `script.js` (iar pentru calculatorul Ltd adaugă noul an în `ANI_FISCALI`, cu cotele pentru dividende, și butonul lui în `index.html` și `en.html`), apoi anul fiscal din textele calculatoarelor în `index.html` și `en.html` (caută `2025/26`). Pentru calculatorul CIS, adaugă anul nou în `CIS_ANI` și butonul lui în ambele pagini, și scoate anul mai vechi de 4 ani (după 5 aprilie 2027 se scoate 2022/23, iar textul despre termenul pentru 2022/23 de sub titlul calculatorului se schimbă).
 2. **Termenele**: adaugă noile date în `termene.html` și `deadlines.html`. Pe site, termenele trecute apar estompate automat. Regenerează și fișierele `.ics`.
 3. **Ghidurile**: verifică sumele (mile, lucru de acasă, amenzi) și data „Actualizat”.
 

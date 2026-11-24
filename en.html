@@ -7,7 +7,7 @@
   <meta name="description" content="Accountants in London, working online across the UK: Self Assessment, CIS refunds, limited companies, VAT and MTD. Advice in English or Romanian.">
   <link rel="alternate" hreflang="ro" href="https://serviciidecontabilitateanglia.github.io/">
   <link rel="alternate" hreflang="en" href="https://serviciidecontabilitateanglia.github.io/en.html">
-  <link rel="alternate" hreflang="x-default" href="https://serviciidecontabilitateanglia.github.io/en.html">
+  <link rel="alternate" hreflang="x-default" href="https://serviciidecontabilitateanglia.github.io/">
   <link rel="canonical" href="https://serviciidecontabilitateanglia.github.io/en.html">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -186,7 +186,7 @@
         <a href="ghid-mtd-30000-aprilie-2027.html" class="btn btn--small" hreflang="ro">Find out (in Romanian)</a>
       </div>
     </div>
-    <div class="sezon" data-sezon hidden data-text="⏰ {n} days left until 31 January, the Self Assessment deadline." data-ultima="⏰ Today is the last day to file your Self Assessment!">
+    <div class="sezon" data-sezon hidden data-text="⏰ {n} days left until 31 January, the Self Assessment deadline." data-ultima="⏰ Today is the last day to file your Self Assessment!" data-maine="⏰ Tomorrow is the last day to file your Self Assessment!">
       <div class="container sezon__inner">
         <p data-sezon-text></p>
         <a href="#contact" class="btn btn--small" data-tip="Self-employed">Get a quote</a>
@@ -281,11 +281,19 @@
         <div class="section__head">
           <p class="eyebrow">Free calculator</p>
           <h2>How much CIS tax could you get back?</h2>
-          <p>Enter your figures for the 2025/26 tax year (6 April 2025 – 5 April 2026) and see an instant refund estimate.</p>
+          <p>Pick the tax year, enter your figures and see an instant refund estimate. You can claim back up to 4 years: the deadline for <strong>2022/23</strong> is <strong>5 April 2027</strong>.</p>
         </div>
 
         <div class="calc" id="cis-calc">
           <form class="calc__form" autocomplete="off" novalidate>
+            <fieldset class="an-fiscal">
+              <legend>Tax year</legend>
+              <label><input type="radio" name="an" value="2026/27"> 2026/27</label>
+              <label><input type="radio" name="an" value="2025/26" checked> 2025/26</label>
+              <label><input type="radio" name="an" value="2024/25"> 2024/25</label>
+              <label><input type="radio" name="an" value="2023/24"> 2023/24</label>
+              <label><input type="radio" name="an" value="2022/23"> 2022/23</label>
+            </fieldset>
             <fieldset>
               <legend>1. Your CIS income</legend>
               <label>Total gross pay (before deductions)
@@ -309,7 +317,7 @@
                 </label>
                 <label>Business miles in your own vehicle
                   <span class="money"><span>mi</span><input type="number" name="mile" min="0" step="any" inputmode="decimal" placeholder="0"></span>
-                  <small>We use 45p per mile for the first 10,000 miles and 25p after that (the 2025/26 rates).</small>
+                  <small data-cis-mile>We use 45p per mile for the first 10,000 miles and 25p after that (the 2025/26 rates).</small>
                 </label>
                 <label>Other travel (train, parking, tolls)
                   <span class="money"><span>£</span><input type="number" name="transport" min="0" step="any" inputmode="decimal" placeholder="0"></span>
@@ -336,13 +344,13 @@
               <div><dt>Allowable expenses</dt><dd data-out="cheltuieli">£0</dd></div>
               <div><dt>Taxable profit</dt><dd data-out="profit">£0</dd></div>
               <div><dt>Income Tax</dt><dd data-out="impozit">£0</dd></div>
-              <div><dt>Class 4 National Insurance</dt><dd data-out="ni">£0</dd></div>
+              <div><dt>National Insurance</dt><dd data-out="ni">£0</dd></div>
               <div><dt>Total owed</dt><dd data-out="datorat">£0</dd></div>
               <div><dt>CIS already deducted</dt><dd data-out="retinut">£0</dd></div>
             </dl>
 
             <a href="#contact" class="btn btn--block calc__cta">Claim my refund</a>
-            <p class="calc__note">This is an estimate only, not tax advice. It uses 2025/26 rates for England, Wales and Northern Ireland and assumes CIS was your only income. A salary, rental income, student loan or living in Scotland will change the result. We confirm the exact figure at your free consultation.</p>
+            <p class="calc__note">This is an estimate only, not tax advice. It uses the rates for England, Wales and Northern Ireland for the tax year you pick (<span data-cis-an>2025/26</span>) and assumes CIS was your only income. A salary, rental income, student loan or living in Scotland will change the result. We confirm the exact figure at your free consultation.</p>
           </aside>
         </div>
       </div>
@@ -562,7 +570,7 @@
             <span class="card__link">Read (in Romanian) →</span>
           </a>
         </div>
-        <p class="ghiduri__toate"><a href="ghiduri.html" class="btn btn--ghost" hreflang="ro">See all 20 guides (in Romanian) →</a></p>
+        <p class="ghiduri__toate"><a href="ghiduri.html" class="btn btn--ghost" hreflang="ro">See all 26 guides (in Romanian) →</a></p>
       </div>
     </section>
 

@@ -21,12 +21,13 @@ const TEXTE = {
     seTrimite: "Se trimite…",
     trimis: `Mulțumim! Am primit mesajul și te contactăm în cel mult 24 de ore. Vrei mai repede? <a href="${CALENDLY}" target="_blank" rel="noopener">Programează o consultație</a> sau <a href="https://wa.me/${WHATSAPP}" target="_blank" rel="noopener">scrie-ne pe WhatsApp</a>.`,
     waButon: "Trimite rezultatul pe WhatsApp",
-    waCis: (stare, suma, brut) => `Bună ziua! Am folosit calculatorul CIS de pe site: ${stare} ${suma} (venit brut ${brut}). Mă puteți ajuta cu declarația?`,
+    waCis: (stare, suma, brut, an) => `Bună ziua! Am folosit calculatorul CIS de pe site pentru anul fiscal ${an}: ${stare} ${suma} (venit brut ${brut}). Mă puteți ajuta cu declarația?`,
     waLtd: (an, profit) => `Bună ziua! Am folosit calculatorul Self-employed sau Ltd (${an}) pentru un profit de ${profit} pe an. Aș vrea să discutăm ce variantă mi se potrivește.`,
     detalii: "Vezi detaliile ↓",
     ceInclude: "Ce include ▾",
     ascunde: "Ascunde ▴",
     eroare: "Mesajul nu a putut fi trimis. Se deschide aplicația de e-mail ca să-l trimiți de acolo.",
+    mileNota: (mare, mica, an) => `Calculăm ${mare}p/milă pentru primele 10.000 de mile și ${mica}p după aceea (ratele pentru ${an}).`,
   },
   en: {
     subiect: "Accounting quote request",
@@ -35,12 +36,13 @@ const TEXTE = {
     seTrimite: "Sending…",
     trimis: `Thank you! We've received your message and will get back to you within 24 hours. Need us sooner? <a href="${CALENDLY}" target="_blank" rel="noopener">Book a consultation</a> or <a href="https://wa.me/${WHATSAPP}" target="_blank" rel="noopener">message us on WhatsApp</a>.`,
     waButon: "Send my result on WhatsApp",
-    waCis: (stare, suma, brut) => `Hello! I used the CIS calculator on your website: ${stare} ${suma} (gross pay ${brut}). Can you help me with my tax return?`,
+    waCis: (stare, suma, brut, an) => `Hello! I used the CIS calculator on your website for the ${an} tax year: ${stare} ${suma} (gross pay ${brut}). Can you help me with my tax return?`,
     waLtd: (an, profit) => `Hello! I used the self-employed or Ltd calculator (${an}) for a profit of ${profit} a year. I'd like to talk about which option suits me.`,
     detalii: "See details ↓",
     ceInclude: "What's included ▾",
     ascunde: "Hide ▴",
     eroare: "Your message couldn't be sent. Your e-mail app will open so you can send it from there.",
+    mileNota: (mare, mica, an) => `We use ${mare}p per mile for the first 10,000 miles and ${mica}p after that (the ${an} rates).`,
   },
 };
 const t = TEXTE[document.documentElement.lang] || TEXTE.ro;
@@ -181,17 +183,22 @@ document.querySelectorAll("[data-tip]").forEach((btn) =>
   })
 );
 
-// Banner de sezon: în decembrie și ianuarie, zilele rămase până la termenul din 31 ianuarie
+// Banner de sezon: din 1 noiembrie până pe 31 ianuarie, zilele rămase până la termenul din 31 ianuarie
+// (noiembrie e deja sezon pentru Self Assessment și rambursările CIS)
 const sezon = document.querySelector("[data-sezon]");
 if (sezon) {
   const azi = new Date();
   azi.setHours(0, 0, 0, 0);
   const luna = azi.getMonth();
-  if (luna === 11 || luna === 0) {
-    const termen = new Date(luna === 11 ? azi.getFullYear() + 1 : azi.getFullYear(), 0, 31);
+  if (luna === 10 || luna === 11 || luna === 0) {
+    const termen = new Date(luna === 0 ? azi.getFullYear() : azi.getFullYear() + 1, 0, 31);
     const zile = Math.round((termen - azi) / 86400000);
+    // În română: „19 zile”, dar „20 de zile”, „68 de zile”
+    const numar = document.documentElement.lang === "ro" && (zile % 100 === 0 || zile % 100 >= 20) ? zile + " de" : String(zile);
     sezon.querySelector("[data-sezon-text]").textContent =
-      zile === 0 ? sezon.dataset.ultima : sezon.dataset.text.replace("{n}", zile);
+      zile === 0 ? sezon.dataset.ultima
+        : zile === 1 && sezon.dataset.maine ? sezon.dataset.maine
+        : sezon.dataset.text.replace("{n}", numar);
     sezon.hidden = false;
   }
 }
@@ -224,8 +231,8 @@ const an = document.getElementById("an");
 if (an) an.textContent = new Date().getFullYear();
 
 // ========== Calculator CIS ==========
-// Ratele pentru anul fiscal 2025/26 (Anglia, Țara Galilor și Irlanda de Nord).
-// Dacă ratele se schimbă, modifică doar valorile de aici.
+// Ratele de bază (anul fiscal 2025/26, Anglia, Țara Galilor și Irlanda de Nord).
+// Diferențele pe ani pentru calculatorul CIS sunt în CIS_ANI, mai jos.
 const RATE = {
   alocatiePersonala: 12570,   // Personal Allowance
   pragReducereAlocatie: 100000, // peste acest venit, alocația scade cu £1 la fiecare £2
@@ -261,6 +268,19 @@ const ANI_FISCALI = {
   "2026/27": { divCote: [0.1075, 0.3575, 0.3935] },
 };
 
+// Calculatorul CIS: ce diferă de la un an fiscal la altul (rambursarea se poate cere până la 4 ani în urmă).
+// Valorile lipsă se iau din RATE. class2 = Class 2 NI pe an, datorat dacă profitul trece de niPragInferior
+// (desființat din 2024/25). Pentru 2022/23, 9,73% și 2,73% sunt cotele Class 4 pe tot anul.
+// La un an fiscal nou: adaugă-l aici și butonul lui în index.html și en.html; scoate anul care a trecut de 4 ani.
+const CIS_ANI = {
+  "2022/23": { niPragInferior: 11908, niCotaPrincipala: 0.0973, niCotaSuperioara: 0.0273, pragAditional: 150000, class2: 3.15 * 52 },
+  "2023/24": { niCotaPrincipala: 0.09, class2: 3.45 * 52 },
+  "2024/25": {},
+  "2025/26": {},
+  "2026/27": { mileCotaMare: 0.55 },
+};
+const rateCIS = (an) => Object.assign({}, RATE, CIS_ANI[an] || {});
+
 // Alocația personală scade cu £1 la fiecare £2 de venit peste prag
 function alocatiePentru(venit) {
   return Math.max(RATE.alocatiePersonala - Math.max(venit - RATE.pragReducereAlocatie, 0) / 2, 0);
@@ -268,29 +288,34 @@ function alocatiePentru(venit) {
 
 // Impozitul pe partea de venit impozabil dintre „de la” și „până la”, pe benzile 20/40/45%
 // (cote = [bază, superioară, adițională]; pentru dividende se folosesc alte cote)
-function impozitPeBenzi(dela, panaLa, cote) {
+function impozitPeBenzi(dela, panaLa, cote, r) {
+  r = r || RATE;
   const felie = (min, max) => Math.max(Math.min(panaLa, max) - Math.max(dela, min), 0);
-  return felie(0, RATE.bandaDeBaza) * cote[0] +
-    felie(RATE.bandaDeBaza, RATE.pragAditional) * cote[1] +
-    felie(RATE.pragAditional, Infinity) * cote[2];
+  return felie(0, r.bandaDeBaza) * cote[0] +
+    felie(r.bandaDeBaza, r.pragAditional) * cote[1] +
+    felie(r.pragAditional, Infinity) * cote[2];
 }
 
-// Impozit pe venit + Class 4 NI pentru un profit de self-employed
-function taxeSelfEmployed(profit) {
+// Impozit pe venit + Class 4 NI (și Class 2, până în 2023/24) pentru un profit de self-employed.
+// r = ratele anului (din rateCIS); fără r se folosesc cele din RATE.
+function taxeSelfEmployed(profit, r) {
+  r = r || RATE;
   const impozabil = Math.max(profit - alocatiePentru(profit), 0);
-  const impozit = impozitPeBenzi(0, impozabil, [RATE.cotaDeBaza, RATE.cotaSuperioara, RATE.cotaAditionala]);
+  const impozit = impozitPeBenzi(0, impozabil, [r.cotaDeBaza, r.cotaSuperioara, r.cotaAditionala], r);
   const ni =
-    Math.max(Math.min(profit, RATE.niPragSuperior) - RATE.niPragInferior, 0) * RATE.niCotaPrincipala +
-    Math.max(profit - RATE.niPragSuperior, 0) * RATE.niCotaSuperioara;
+    Math.max(Math.min(profit, r.niPragSuperior) - r.niPragInferior, 0) * r.niCotaPrincipala +
+    Math.max(profit - r.niPragSuperior, 0) * r.niCotaSuperioara +
+    (r.class2 && profit >= r.niPragInferior ? r.class2 : 0);
   return { impozit, ni };
 }
 
 function calculeazaCIS(d) {
-  const mile = Math.min(d.mile, RATE.mileLimita) * RATE.mileCotaMare +
-    Math.max(d.mile - RATE.mileLimita, 0) * RATE.mileCotaMica;
+  const r = rateCIS(d.an);
+  const mile = Math.min(d.mile, r.mileLimita) * r.mileCotaMare +
+    Math.max(d.mile - r.mileLimita, 0) * r.mileCotaMica;
   const cheltuieli = d.unelte + d.protectie + d.transport + d.telefon + d.altele + mile;
   const profit = Math.max(d.brut - cheltuieli, 0);
-  const { impozit, ni } = taxeSelfEmployed(profit);
+  const { impozit, ni } = taxeSelfEmployed(profit, r);
   const datorat = impozit + ni;
   return { brut: d.brut, cheltuieli, profit, impozit, ni, datorat, retinut: d.retinut, rezultat: d.retinut - datorat };
 }
@@ -333,31 +358,37 @@ if (calc) {
   retinutInput.addEventListener("input", () => { retinutInput.dataset.editat = retinutInput.value !== "" ? "da" : ""; });
 
   const actualizeaza = () => {
+    const ales = form.querySelector("[name=an]:checked");
+    const an = (ales && ales.value) || "2025/26";
+    const r = rateCIS(an);
+    const nota = calc.querySelector("[data-cis-mile]");
+    if (nota) nota.textContent = t.mileNota(Math.round(r.mileCotaMare * 100), Math.round(r.mileCotaMica * 100), an);
+    calc.querySelectorAll("[data-cis-an]").forEach((el) => { el.textContent = an; });
     const brut = numar("brut");
     if (retinutInput.dataset.editat !== "da") {
       retinutInput.value = brut ? Math.round(brut * RATE.cisCota) : "";
     }
-    const r = calculeazaCIS({
-      brut,
+    const rez = calculeazaCIS({
+      an, brut,
       retinut: numar("retinut"),
       unelte: numar("unelte"), protectie: numar("protectie"), mile: numar("mile"),
       transport: numar("transport"), telefon: numar("telefon"), altele: numar("altele"),
     });
-    ultimRezultat = brut ? r : null;
+    ultimRezultat = brut ? Object.assign({ an }, rez) : null;
     if (brut && !calc.dataset.numarat) { calc.dataset.numarat = "da"; numara("calculator-cis"); }
 
-    const stare = !brut ? "gol" : r.rezultat >= 0 ? "rambursare" : "plata";
+    const stare = !brut ? "gol" : rez.rezultat >= 0 ? "rambursare" : "plata";
     calc.querySelectorAll("[data-show]").forEach((el) => { el.hidden = el.dataset.show !== stare; });
     calc.querySelector(".calc__result").dataset.stare = stare;
     calc.querySelectorAll("[data-out]").forEach((el) => {
-      const v = r[el.dataset.out];
+      const v = rez[el.dataset.out];
       el.textContent = lire.format(el.dataset.out === "rezultat" ? Math.abs(v) : v);
     });
 
     const eticheta = [...calc.querySelectorAll(".calc__label")].find((el) => !el.hidden).textContent;
-    const suma = lire.format(Math.abs(r.rezultat));
+    const suma = lire.format(Math.abs(rez.rezultat));
     waCis.hidden = !brut;
-    waCis.href = linkWhatsApp(t.waCis(eticheta.toLowerCase(), suma, lire.format(brut)));
+    waCis.href = linkWhatsApp(t.waCis(eticheta.toLowerCase(), suma, lire.format(brut), an));
     bara.dataset.stare = stare;
     bara.querySelector(".calc-sticky__label").textContent = eticheta;
     bara.querySelector(".calc-sticky__amount").textContent = suma;
@@ -375,8 +406,8 @@ if (calc) {
     if (ultimRezultat && !contact.elements.mesaj.value) {
       const suma = lire.format(Math.abs(ultimRezultat.rezultat));
       contact.elements.mesaj.value = document.documentElement.lang === "en"
-        ? `CIS calculator estimate: ${ultimRezultat.rezultat >= 0 ? "refund" : "to pay"} ${suma} (gross pay ${lire.format(ultimRezultat.brut)}).`
-        : `Estimare din calculatorul CIS: ${ultimRezultat.rezultat >= 0 ? "rambursare" : "de plată"} ${suma} (venit brut ${lire.format(ultimRezultat.brut)}).`;
+        ? `CIS calculator estimate for ${ultimRezultat.an}: ${ultimRezultat.rezultat >= 0 ? "refund" : "to pay"} ${suma} (gross pay ${lire.format(ultimRezultat.brut)}).`
+        : `Estimare din calculatorul CIS pentru ${ultimRezultat.an}: ${ultimRezultat.rezultat >= 0 ? "rambursare" : "de plată"} ${suma} (venit brut ${lire.format(ultimRezultat.brut)}).`;
     }
   });
 }
